@@ -50,6 +50,21 @@ HOW TO CUSTOMIZE?
     --success-green: #48BB78; /* Green - for success/available status */
 }
 
+/* =========================== DARK MODE COLORS =========================== */
+/* Color variable specifically for dark mode */
+/* Override the light mode colors when dark mode is active */
+
+body.dark-mode {
+    --light-bg: #1A202C; /* Dark blue-gray for page background */
+    --card-bg: #2D3748; /* Slightly lighter for cards */
+
+    --dark-text: #F7FAFC; /* Almost white for main text */
+    --medium-text: #CBD5E0; /* Light gray for secondary text */
+
+    /* Border color for dark backgrounds */
+    --border-color: #4A5568;
+}
+
 /* =========================== (BODY) GLOBAL STYLES =========================== */
 /* Applies to the entire website */
 
@@ -112,6 +127,16 @@ nav {
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
     animation: slideDown 0.6s ease-out;
     transition: box-shadow 0.3s ease;
+}
+
+/* Dark mode: Override navbar background to dark color */
+body.dark-mode nav {
+    background: rgba(45, 55, 72, 0.95); /* Dark blue-gray with 95% opacity */
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow for visibility */
+}
+
+body.dark-mode nav.scrolled {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4); /* Even stronger shadow */
 }
 
 /* Enhanced shadow when user scrolls down */
@@ -242,9 +267,25 @@ nav.scrolled {
     transform: rotate(-45deg) translate(7px, -7px); /* Bottom line rotates */
 }
 
-/* ====== MOBILE RESPONSIVE NAVIGATION ====== */
+/* =========================== MOBILE RESPONSIVE NAVIGATION =========================== */
 /* These styles applies on screens 768px or smaller (tablets and phones) */
 @media (max-width: 768px) {
+    .dark-mode-toggle {
+        margin-right: 16px;
+        width: 36px;
+        height: 36px;
+    }
+
+    .dark-mode-toggle svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    body.dark-mode .nav-links {
+    background: rgba(45, 55, 72, 0.98);
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.4);
+}
+
     /* Show hamburger menu on mobile phone */
     .menu-toggle {
         display: flex;
@@ -267,6 +308,11 @@ nav.scrolled {
         transition: right 0.3s ease; /* Smooth slide animation*/
     }
 
+    body.dark-mode .nav-links {
+        background: rgba(45, 55, 72, 0.98); /* Dark background for mobile menu */
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.4); /* Stronger shadow */
+    }
+
     /* When menu is active, slide into view */
     .nav-links.active {
         right: 0; /* Moves to the right edge of the screen */
@@ -279,7 +325,66 @@ nav.scrolled {
     }
 }
 
-/* === HERO SECTION (HOME PAGE) === */
+/* =========================== DARK MODE (TOGGLE BUTTON) =========================== */
+/* Button that switches between light and dark themes */
+
+.dark-mode-toggle {
+    width: 40px;
+    height: 40px;
+
+    /* Button layout */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Button styling */
+    background: var(--light-bg); /* Uses theme background */
+    border: 2px solid var(--border-color);
+    border-radius: 50%; 
+    cursor: pointer; /* To show that it is clickable */
+
+    transition: all 0.3s ease;
+
+    padding: 0;
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+/* Hover effect- subtle lift and shadow */
+.dark-mode-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    border-color: var(--primary-color);
+}
+
+/* Icon styling for both sun and moon */
+.dark-mode-toggle svg {
+    width: 20px;
+    height: 20px;
+    color: var(--dark-text);
+    transition: all 0.3s ease;
+}
+
+/* By default. show moon icon */
+.sun-icon {
+    display: none; /* Hidden in light mode*/
+}
+
+.moon-icon {
+    display: block; /* Visible in light mode */
+}
+
+/* When dark mode is active, swap icons */
+body.dark-mode .sun-icon {
+    display: block; /* Show sun in dark mode */
+}
+
+body.dark-mode .moon-icon {
+    display: none;
+}
+
+
+/* =========================== HERO SECTION (HOME PAGE) =========================== */
 .hero {
     min-height: 100vh; /* Full screen height */
     display: flex;
@@ -390,7 +495,7 @@ nav.scrolled {
     line-height: 1.8; /* Extra space between lines for better readability */
 }
 
-/* === STATUS BADGE === */
+/* =========================== STATUS BADGE =========================== */
 /* Open to Internship Opportunities" badge*/
 .status-badge {
     display: inline-flex;
@@ -429,7 +534,7 @@ nav.scrolled {
     50% { opacity: 0.5; } /* Dims */
 }
 
-/* === BUTTONS === */
+/* =========================== BUTTONS =========================== */
 /* Container for buttons */
 .hero-buttons {
     display: flex;
@@ -479,7 +584,7 @@ nav.scrolled {
     transform: translateY(-2px);
 }
 
-/* === PROFILE IMAGE === */
+/* =========================== PROFILE IMAGE/PICTURE =========================== */
 /* Container for profile picture */
 .hero-image {
     position: relative;
@@ -510,7 +615,7 @@ nav.scrolled {
     transform: translateY(-10px);
 }
 
-/* === SECTION STYLE === */
+/* =========================== SECTION STYLE =========================== */
 /* Base style for major sections */
 section {
     padding: 100px 32px;
@@ -518,7 +623,7 @@ section {
     margin: 0 auto; /* Centers section */
 }
 
-/* === SECTION HEADERS === */
+/* =========================== SECTION HEADERS =========================== */
 /* Consistent header style for all sections */
 .section-header {
     text-align: center;
@@ -561,7 +666,7 @@ section {
     margin: 0 auto; /*Centers description */
 }
 
-/* === ABOUT SECTION === */
+/* =========================== ABOUT SECTION =========================== */
 .about-content {
     display: grid;
     gap: 60px;
@@ -614,7 +719,7 @@ section {
     transform: translateY(-2px);
 }
 
-/* === STATS CARDS === */
+/* =========================== STATS CARDS =========================== */
 /* Container for statistics cards */
 .about-stats {
     display: grid;
@@ -638,6 +743,34 @@ section {
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* =========================== DARK MODE: BUTTONS =========================== */
+
+body.dark-mode .btn-primary:hover {
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.5); /* Brighter glow in dark mode */
+}
+
+/* Secondary button dark mode adjustments */
+body.dark-mode .btn-secondary {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color); 
+}
+
+body.dark-mode .btn-secondary:hover {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.5); /* Purple glow */
+}
+
+/* Form submit button - enhanced glow */
+body.dark-mode .form-submit {
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+}
+
+body.dark-mode .form-submit:hover {
+    box-shadow: 0 8px 35px rgba(102, 126, 234, 0.6);
 }
 
 /* Stat card lifts on hover */
@@ -664,7 +797,7 @@ section {
     font-weight: 500;
 }
 
-/* === PROJECTS SECTION === */
+/* =========================== PROJECTS SECTION =========================== */
 /* Grid layout for project cards */
 .projects-grid {
     display: grid;
@@ -672,7 +805,7 @@ section {
     gap: 40px;
 }
 
-/* === PROJECT CARD === */
+/* =========================== PROJECT CARD =========================== */
 .project-card {
     background: white;
     border-radius: 20px;
@@ -695,6 +828,40 @@ section {
     transform: translateY(-12px);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.20);
     border-color: rgba(102, 126, 234, 0.1);
+}
+
+/* =========================== DARK MODE PROJECT CARD =========================== */
+/* Override project card styling for dark mode */
+
+body.dark-mode .project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0,);
+}
+
+/* Enhanced hover effect for dark mode */
+body.dark-mode .project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(102, 126, 234, 0.4);
+    border-color: var(--primary-color);
+}
+
+/* Project tech tags in dark mode */
+body.dark-mode .project-tech {
+    background: rgba(102, 126, 234, 0.15); /* Subtle purple tint */
+    color: #A5B4FC; /* Light purple-blue for readability */
+    border: 1px solid rgba(102, 126, 234, 0.3); /* Subtle border */
+}
+
+body.dark-mode .project-links a {
+    background: rgba(102, 126, 234, 0.1); /* Subtle background */
+    color: var(--primary-color); /* Keep primary color */
+    border: 1px solid var(--primary-color);
+}
+
+body.dark-mode .project-links a:hover {
+    background: var(--primary-color); /* Fill with primary color */
+    color: white; /* White text for contrast */
 }
 
 /* Project image area */
@@ -753,7 +920,7 @@ section {
     overflow: hidden;
 }
 
-/* === PROJECT TAGS === */
+/* =========================== PROJECT TAGS =========================== */
 /* Container for technology tag */
 
 .project-tags {
@@ -783,7 +950,7 @@ section {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
-/* === PROJECT LINKS === */
+/* =========================== PROJECT LINKS =========================== */
 .project-links {
     display: flex;
     gap: 12px;
@@ -833,7 +1000,7 @@ section {
     z-index: 2;
 }
 
-/* === SKILLS SECTION === */
+/* =========================== SKILLS SECTION =========================== */
 /* Grid for skill categories */
 .skills-grid {
     display: grid;
@@ -841,7 +1008,7 @@ section {
     gap: 32px;
 }
 
-/* === SKILL CATEGORY CARD === */
+/* =========================== SKILL CATEGORY CARD =========================== */
 .skill-category {
     background: white;
     padding: 32px;
@@ -873,7 +1040,7 @@ section {
     gap: 20px;
 }
 
-/* === INDIVIDUAL SKILL ITEM === */
+/* =========================== INDIVIDUAL SKILL ITEM =========================== */
 .skill-item {
     display: flex;
     justify-content: space-between;
@@ -905,7 +1072,7 @@ section {
     color: var(--medium-text);
 }
 
-/* === SKILL LEVEL DOTS === */
+/* =========================== SKILL LEVEL DOTS =========================== */
 /* Visual indicator of skill proficiency */
 .skill-dots {
     display: flex;
@@ -926,7 +1093,7 @@ section {
     background: var(--primary-color); /* Purple for filled */
 }
 
-/* === CONTACT SECTION === */
+/* =========================== CONTACT SECTION =========================== */
 .contact-content {
     max-width: 700px;
     margin: 0 auto;
@@ -962,76 +1129,76 @@ section {
     flex-wrap: wrap;
 }
 
-/* === CONTACT FORM === */
-.contact-form {
-    background: white;
-    padding: 48px;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    margin-bottom: 50px;
-    text-align: left;
-}
+    /* =========================== CONTACT FORM =========================== */
+    .contact-form {
+        background: white;
+        padding: 48px;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        margin-bottom: 50px;
+        text-align: left;
+    }
 
-/* Form group (label & input) */
-.form-group {
-    margin-bottom: 28px;    
-}
+    /* Form group (label & input) */
+    .form-group {
+        margin-bottom: 28px;    
+    }
 
-/* Form label */
-.form-group label {
-    display: block;
-    font-weight: 600;
-    color: var(--dark-text);
-    margin-bottom: 8px;
-    font-size: 15px; 
-}
+    /* Form label */
+    .form-group label {
+        display: block;
+        font-weight: 600;
+        color: var(--dark-text);
+        margin-bottom: 8px;
+        font-size: 15px; 
+    }
 
-/* Text input and text area */
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 14px 16px;
-    border: 2px solid var(--border-color);
-    border-radius: 8px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease; 
-}
+    /* Text input and text area */
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 14px 16px;
+        border: 2px solid var(--border-color);
+        border-radius: 8px;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 15px;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+    }
 
-/* Input focus state when clicked */
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none; /* Removes default browser outline */
-    border-color: var(--primary-color); /* Purple border */
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); /* Subtle glow */
-}
+    /* Input focus state when clicked */
+    .form-group input:focus,
+    .form-group textarea:focus {
+        outline: none; /* Removes default browser outline */
+        border-color: var(--primary-color); /* Purple border */
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); /* Subtle glow */
+    }
 
-/* Text area */
-.form-group textarea {
-    min-height: 150px;
-    resize: vertical; /* Only allows vertical resizing */
-}
+    /* Text area */
+    .form-group textarea {
+        min-height: 150px;
+        resize: vertical; /* Only allows vertical resizing */
+    }
 
-/* Form submit button */
-.form-submit {
-    width: 100%;
-    padding: 16px 32px;
-    background: var(--primary-gradient);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 16px;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    /* Form submit button */
+    .form-submit {
+        width: 100%;
+        padding: 16px 32px;
+        background: var(--primary-gradient);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 16px;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-.form-submit:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
-}
+    .form-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
+    }
 
-/* === SOCIAL LINKS === */
+/* =========================== SOCIAL LINKS =========================== */
 .social-links {
     display: flex;
     gap: 20px;
@@ -1082,7 +1249,7 @@ footer p {
     font-weight: 600;
 }
 
-/* === FADE IN ANIMATION === */
+/* =========================== FADE IN ANIMATION =========================== */
 /* Animation when scrolling */
 .fade-in {
     opacity: 0;
@@ -1095,7 +1262,7 @@ footer p {
     transform: translateY(0);
 }
 
-/* === MOBILE RESPONSIVE STYLES === */
+/* =========================== MOBILE RESPONSIVE STYLES =========================== */
 /* Adjustment for tablets (max width: 768px)*/
 @media (max-width: 768px) {
     /* Smaller hero title */
@@ -1150,69 +1317,69 @@ footer p {
     }
 }
 
-    /* Adjustments for phones (max-width: 480px) */
-    @media (max-width: 480px) {
-        /* Even smaller tiles */
-        .hero-title {
-            font-size: 32px;
-        }
-
-        .section-title {
-            font-size: 28px;
-        }
-
-        .hero-subtitle {
-            font-size: 16px;
-        }
-
-        /* Reduced section padding */
-        section {
-            padding: 60px 20px;
-        }
-
-        /* Small stats number for font size */
-        .stat-number {
-            font-size: 36px;
-        }
-
-        /* Small project title */
-        .project-title {
-            font-size: 20px;
-        }
-
-        /* Tighter form padding */
-        .contact-form {
-            padding: 24px 16px;
-        }
-
-        /* Smaller social icons */
-        .social-link {
-            width: 45px;
-            height: 45px;
-        }
+/* Adjustments for phones (max-width: 480px) */
+@media (max-width: 480px) {
+    /* Even smaller tiles */
+    .hero-title {
+        font-size: 32px;
     }
 
-    /* === PRINT STYLES === */
-    /* Styles for when page is printed */
-    @media print {
-        /* Hide navigation and loading screen */
-        nav,
-        .loading,
-        .menu-toggle {
-            display: none;
-        }
-
-        /* Ensure white background */
-        body {
-            background: white;
-        }
-
-        /* Remove shadow when printing */
-        .project-card,
-        .skill-category,
-        .stat-card,
-        .contact-form {
-            box-shadow: none;
-            border: 1px solid var(--border-color);
-        }
+    .section-title {
+        font-size: 28px;
     }
+
+    .hero-subtitle {
+        font-size: 16px;
+    }
+
+    /* Reduced section padding */
+    section {
+        padding: 60px 20px;
+    }
+
+    /* Small stats number for font size */
+    .stat-number {
+        font-size: 36px;
+    }
+
+    /* Small project title */
+    .project-title {
+        font-size: 20px;
+    }
+
+    /* Tighter form padding */
+    .contact-form {
+        padding: 24px 16px;
+    }
+
+    /* Smaller social icons */
+    .social-link {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+/* =========================== PRINT STYLES =========================== */
+/* Styles for when page is printed */
+@media print {
+    /* Hide navigation and loading screen */
+    nav,
+    .loading,
+    .menu-toggle {
+        display: none;
+    }
+
+    /* Ensure white background */
+    body {
+        background: white;
+    }
+
+    /* Remove shadow when printing */
+    .project-card,
+    .skill-category,
+    .stat-card,
+    .contact-form {
+        box-shadow: none;
+        border: 1px solid var(--border-color);
+    }
+}
