@@ -125,6 +125,16 @@ window.addEventListener('scroll', () => {
     }
 });
 
+/* ============================== SCROLL PROGRESS BAR =========================== */
+window.addEventListener('scroll', () => {
+    const scrollProgress = document.querySelector('.scroll-progress-bar');
+    const scrollTop = window.pageYOffset || documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrollPercentage  = (scrollTop / scrollHeight) * 100;
+
+    scrollProgress.style.width = scrollPercentage + '%';
+});
+
 // ================== SCROLL ANIMATION SCROLL EFFECT =====================
 // Makes sections fade in and slide up when they appear on screen
 

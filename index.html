@@ -22,14 +22,15 @@
     <!-- This makes my site to look good when shared on social media -->
     <!-- Open Graph (for Facebook, LinkedIn, etc.) -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://website.com">
+    <meta property="og:url" content="https://wellintia-devs.github.io/">
     <meta property="og:title" content="Nowell Intia - Portfolio">
     <meta property="og:description" content="Nowell Intia - Computer Science Student seeking internships in Frontend, Backend,
     Mobile Development, and UI/UX Design">
+    <meta property="og:image" content="https://website.com/og-image.jpg">
     
     <!-- Twitter Card (for Twitter/X)-->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://website.com">
+    <meta property="twitter:url" content="https://wellintia-devs.github.io/">
     <meta property="twitter:title" content="Nowell Intia - Portfolio">
     <meta property="twitter:description" content="Nowell Intia - Computer Science Student seeking internships in Frontend, Backend,
     Mobile Development, and UI/UX Design">
@@ -44,18 +45,40 @@
     <!-- preconnect = speeds up font loading-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" as="style">
     <!-- Poppins and DM Sans fonts with different weights-->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 
     <!--================== EMAILJS LIBRARY =====================-->
     <!-- This library allows sending emails from the contact form-->
     <!-- IMPORTANT: This is required for the contact form to work-->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
 
     <!--================== EXTERNAL CSS FILE =====================-->
     <!-- Links to separate CSS file for all styling-->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preload" href="css/style.css" as="style">
+    <script type="application/ld+json">
+        <noscript>
+      <style>.loading { display: none; }</style>
+      <div class="no-js-warning">Please enable JavaScript for the best experience.</div>
+    </noscript>
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Nowell Intia",
+      "jobTitle": "Computer Science Student",
+      "url": "https://wellintia-devs.github.io/",
+      "sameAs": [
+        "https://github.com/NowellIntia23",
+        "https://www.linkedin.com/in/nowell-intia/"
+      ]
+    }
+    </script>
     </head>
+
+<body>
+    <div class="scroll-progress-bar"></div>
     
     <!-- ================== LOADING SCREEN ===============-->
     <!-- Shows briefly when page first loads, then fades out-->
@@ -65,7 +88,8 @@
 
     <!--================== NAVIGATION BAR =====================-->
     <!-- Fixed navigation that stays at top when scrolling -->
-    <nav id="navbar">
+    <nav id="navbar" role="navigation" aria-label="Main navigation">
+
         <div class="nav-container">
             <!-- Logo/Brand "CCI"-->
             <div class="logo" onclick="window.location.href='#'">CCI</div>
@@ -135,7 +159,7 @@
              <!-- Profile Image-->
               <div class="hero-image">
                 <div class="profile-image-container">
-                <img src="images/profile_picture.png" alt="Nowell Intia" class="profile-image">
+                <img src="images/profile_picture.png" alt="Nowell Intia" class="profile-image" width="400" height="400">
               </div>
               </div>
             </div>
@@ -404,12 +428,12 @@
             <div class="contact-buttons">
             <a href="mailto:nowellintia.work@gmail.com" class="btn btn-primary">Send Email</a>
             <a href="#contact-form-section" class="btn btn-secondary">Or Use Form Below</a>
-            
             </div>
 
 <!-- CONTACT FORM -->
 
 <div class="contact-form" id="contact-form-section">
+    <div class="form-errors" role="alert" aria-live="polite"></div>
 <form id="contactForm">
     <!-- Name Input -->
         <div class="form-group">

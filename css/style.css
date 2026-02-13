@@ -76,6 +76,17 @@ body {
     overflow-x: hidden; /* Prevent horizontal scrolling on small screens - hide horizontal scrollbar */
 }
 
+/* Respect user's motion preferences for WCAG 2.1 compliance */
+@media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
 /* =========================== LOADING SCREEN =========================== */
 /* The animated spinner that shows while the page is loading */
 .loading {
@@ -95,6 +106,7 @@ body {
 .loading.hide {
     opacity: 0;
     visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
 /* =========================== DARK MODE: LOADING SCREEN =========================== */
@@ -134,6 +146,24 @@ nav {
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
     animation: slideDown 0.6s ease-out;
     transition: box-shadow 0.3s ease;
+}
+
+/* ============================== SCROLL PROGRESS BAR =========================== */
+.scroll-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: var(--primary-gradient);
+    width: 0%;  
+    z-index: 10000;
+    transition: width 0.1s ease-out;
+    box-shadow: 0 2px 10px rgba(102, 126, 234, 0.5);
+}
+
+/* Dark mode glow effect */
+body.dark-mode .scroll-progress-bar {
+    box-shadow: 0 2px 15px rgba(139, 92, 246, 0.7);
 }
 
 /* Dark mode: Override navbar background to dark color */
@@ -191,6 +221,13 @@ nav.scrolled {
 .logo:hover {
     transform: scale(1.05); /* Scale up the logo slightly on hover */
 }
+
+/* Improved keyboard navigation */
+.nav-links a:focus-visible {
+      outline: 2px solid var(--primary-color);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
 
 /* =========================== NAVIGATION LINKS =========================== */
 .nav-links {
@@ -1624,7 +1661,7 @@ body.dark-mode .footer-gradient {
 
 /* =========================== DARK MODE: SCROLLBAR =========================== */
 
-::webkit-scrollbar {
+::-webkit-scrollbar {
     width: 12px;
 }
 
@@ -1654,3 +1691,12 @@ body.dark-mode::-webkit-scrollbar-thumb {
 body.dark-mode::-webkit-slider-thumb:hover {
     background: var(--primary-color);
 }
+
+section {
+      page-break-inside: avoid;
+    }
+    
+    .project-card,
+    .skill-category {
+      page-break-inside: avoid;
+    }
