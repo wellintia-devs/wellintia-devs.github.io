@@ -97,6 +97,13 @@ body {
     visibility: hidden;
 }
 
+/* =========================== DARK MODE: LOADING SCREEN =========================== */
+/* Dark loading screen for better theme consistency */
+
+body.dark-mode .loading {
+    background: var(--light-bg);
+}
+
 /* The spinning circle loader */
 .loader {
     width: 50px;
@@ -410,6 +417,17 @@ body.dark-mode .moon-icon {
     animation: float 20s ease-in-out infinite; /* Gentle floating animation */
 }
 
+/* =========================== DARK MODE: HERO SECTION =========================== */
+/* Animated background circle for dark mode */
+
+body.dark-mode .hero::before {
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.15) 0%, transparent 70%) /* Dimmer purple for dark backgrounds */
+}
+
+body.dark-mode .hero::after {
+    background: radial-gradient(circle, rgba(118, 75, 162, 0.15) 0%, transparent 70%);
+}
+
 /* FLoating animation for background effect */
 
 @keyframes float {
@@ -510,6 +528,14 @@ body.dark-mode .moon-icon {
     font-weight: 600;
     margin-bottom: 32px;
     animation: pulse 2s ease-in-out infinite; /* Gentle pulsing effect */
+}
+
+/* Dark mode status badge */
+body.dark-mode .status-badge {
+    background: rgba(72, 187, 120, 0.15);
+    color: #68D391;
+    border: 1px solid rgba(72, 187, 120, 0.4);
+    box-shadow: 0 0 20px rgba(72, 187, 120, 0.3);
 }
 
 /* Blinking green dot before text */
@@ -613,6 +639,12 @@ body.dark-mode .moon-icon {
 /* Profile image hover: lifts */
 .profile-image:hover {
     transform: translateY(-10px);
+}
+
+/* Dark mode: Profile image container enhance the glow */
+body.dark-mode .profile-image-container::before {
+    background: var(--primary-gradient);
+    opacity: 0.4;
 }
 
 /* =========================== SECTION STYLE =========================== */
@@ -719,6 +751,83 @@ section {
     transform: translateY(-2px);
 }
 
+/* =========================== DARK MODE: INTEREST TAGS =========================== */
+body.dark-mode .interest-tag {
+    background: rgba(102, 126, 234, 0.15);
+    color: #A5B4FC;
+    border: 1px solid rgba(102, 126, 234, 0.25);
+}
+
+body.dark-mode .interest-tag:hover {
+    background: rgba(102, 126, 234, 0.25);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* =========================== DARK MODE: ABOUT SECTION =========================== */
+/* About text container */
+
+body.dark-mode .stat-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .stat-card:hover {
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.3);
+    border-color: var(--primary-color);
+    transform: translateY(-5px);
+}
+
+body.dark-mode .stat-number {
+    color: var(--dark-text); /* Light text */
+    text-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+}
+
+/* =========================== DARK MODE: PROJECT IMAGE ENHANCEMENT =========================== */
+/* Dark overlay on project images */
+
+/* Target the project image container */
+body.dark-mode .project-card img {
+    position: relative; /* Allows overlay positioning */
+    filter: brightness(0.7) contrast(1.1); /* Dims image by 30%, increases contrast slightly */
+    transition: all 0.3s ease; /* Smooth transition for hover */
+}
+
+/* Add a dark semi-transparent overlay using pseudo-element */
+body.dark-mode .project-card::before {
+    content: ""; /* Creates empty element */
+    position: absolute; /* Positions over the image */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        180deg, 
+        rgba(26, 32, 44, 0.3) 0%,     /* Subtle dark overlay at top */
+        rgba(26, 32, 44, 0.5) 100%    /* Stronger at bottom */
+    ); /* Gradient overlay darkens the image */
+    border-radius: 12px 12px 0 0; /* Matches card border radius (only top corners) */
+    pointer-events: none; /* Allows clicking through the overlay */
+    z-index: 1; /* Places overlay above image */
+    transition: opacity 0.3s ease; /* Smooth fade transition */
+}
+
+/* On hover, lighten the image and reduce overlay */
+body.dark-mode .project-card:hover img {
+    filter: brightness(0.85) contrast(1.15); /* Brightens to 85% on hover */
+}
+
+body.dark-mode .project-card:hover::before {
+    opacity: 0.5; /* Reduces overlay intensity on hover */
+}
+
+/* Make sure text stays above the overlay */
+body.dark-mode .project-card > * {
+    position: relative;
+    z-index: 2; /* Text and buttons stay on top */
+}
+
 /* =========================== STATS CARDS =========================== */
 /* Container for statistics cards */
 .about-stats {
@@ -747,6 +856,23 @@ section {
 
 /* =========================== DARK MODE: BUTTONS =========================== */
 
+body.dark-mode .btn-primary {
+    background: linear-gradient(135deg, #7C3AED 0%, #A855F7 100%);
+    color: white;
+    box-shadow:
+        0 4px 15px rgba(124, 58, 237, 0.4),
+        0 0 30px rgba(124, 58, 237, 0.3);
+    border: 1px solid rgba(168, 85, 247, 0.5);
+}
+
+body.dark-mode .btn-secondary {
+    background: rgba(124, 58, 237, 0.1);
+    border: 2px solid #8B5CF6;
+    color: #C4B5FD;
+    box-shadow:inset0 2px 10px rgba(139, 92, 246, 0.3),
+    inset 0 0 20px rgba(124, 58, 237, 0.1);
+}
+
 body.dark-mode .btn-primary:hover {
     box-shadow: 0 8px 30px rgba(102, 126, 234, 0.5); /* Brighter glow in dark mode */
 }
@@ -771,6 +897,18 @@ body.dark-mode .form-submit {
 
 body.dark-mode .form-submit:hover {
     box-shadow: 0 8px 35px rgba(102, 126, 234, 0.6);
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow:
+        0 4px 20px rgba(124, 58, 237, 0.4),
+        0 0 40px rgba(124, 58, 237, 0.3);
+    }
+    50% {
+        box-shadow:inset0 4px 25px rgba(124, 58, 237, 0.5),
+        0 0 50px rgba(124, 58, 237, 0.4);
+    }
 }
 
 /* Stat card lifts on hover */
@@ -835,8 +973,8 @@ body.dark-mode .form-submit:hover {
 
 body.dark-mode .project-card {
     background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    box-shadow: 0 4px 20px rgba(0, 0, 0,);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 /* Enhanced hover effect for dark mode */
@@ -854,9 +992,10 @@ body.dark-mode .project-tech {
 }
 
 body.dark-mode .project-links a {
-    background: rgba(102, 126, 234, 0.1); /* Subtle background */
-    color: var(--primary-color); /* Keep primary color */
-    border: 1px solid var(--primary-color);
+    background: rgba(102, 126, 234, 0.15); /* Subtle background */
+    color: #A5B4FC; /* Keep primary color */
+    border: 1px solid rgba(102, 126, 234, 0.4);
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
 }
 
 body.dark-mode .project-links a:hover {
@@ -1040,6 +1179,15 @@ body.dark-mode .project-links a:hover {
     gap: 20px;
 }
 
+/* =========================== DARK MODE: SKILLS SECTION =========================== */
+/* Skill category containers */
+
+body.dark-mode .skill-category {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
 /* =========================== INDIVIDUAL SKILL ITEM =========================== */
 .skill-item {
     display: flex;
@@ -1062,6 +1210,10 @@ body.dark-mode .project-links a:hover {
     gap: 4px;
 }
 
+.skill-item:hover {
+    transform: translateX(8px);
+}
+
 .skill-name {
     font-weight: 600;
     color: var(--dark-text);
@@ -1070,6 +1222,12 @@ body.dark-mode .project-links a:hover {
 .skill-level {
     font-size: 13px;
     color: var(--medium-text);
+}
+
+/* =========================== DARK MODE: INDIVIDUAL SKILL ITEM =========================== */
+body.dark-mode .skill-item:hover {
+    border-color: var(--primary-color);
+    transform: translateX(8px);
 }
 
 /* =========================== SKILL LEVEL DOTS =========================== */
@@ -1091,6 +1249,18 @@ body.dark-mode .project-links a:hover {
 /* Filled dot = high proficiency */
 .skill-dot.filled {
     background: var(--primary-color); /* Purple for filled */
+}
+
+/* =========================== DARK MODE: SKILL DOT =========================== */
+body.dark-mode .skill-dot {
+    background: rgba(102, 126, 234, 0.3);
+    border: 1px solid rgba(102, 126, 234, 0.5); /* Subtle border */        
+}
+
+body.dark-mode .skill-dot.filled {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 8px rgba(102, 126, 234, 0.6);
 }
 
 /* =========================== CONTACT SECTION =========================== */
@@ -1198,6 +1368,45 @@ body.dark-mode .project-links a:hover {
         box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
     }
 
+    /* =========================== DARK MODE: CONTACT SECTION =========================== */
+    /* Location badge */
+
+    body.dark-mode .location-badge {
+        background: rgba(102, 126, 234, 0.15);
+        color: var(--primary-color);
+        border: 1px solid rgba(102, 126, 234, 0.3);
+    }
+
+    /* Contact form container */
+    body.dark-mode .contact-form {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Form inputs and text area */
+    body.dark-mode .form-group input,
+    body.dark-mode .form-group textarea {
+        background: rgba(255, 255, 255, 0.05);
+        border: 2px solid var(--border-color);
+        color: var(--dark-text); /* Light text */
+    }
+
+    /* Placeholder text in dark mode */
+    body.dark-mode .form-group input::placeholder,
+    body.dark-mode .form-group textarea::placeholder {
+        color: var(--medium-text);
+        opacity: 0.6;
+    }
+
+    /* Input focus state */
+    body.dark-mode .form-group input:focus,
+    body.dark-mode .form-group textarea:focus {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+    }
+    
 /* =========================== SOCIAL LINKS =========================== */
 .social-links {
     display: flex;
@@ -1227,7 +1436,23 @@ body.dark-mode .project-links a:hover {
     background: var(--light-bg);
 }
 
-/* === FOOTER === */
+/* Social links - dark mode */
+body.dark-mode .social-link {
+    background: var(--card-bg);
+    color: var(--primary-color);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .social-link:hover {
+    background: rgba(102, 126, 234, 0.15);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+/* =========================== FOOTER =========================== */
 footer {
     background: var(--dark-text);
     color: white;
@@ -1247,6 +1472,19 @@ footer p {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     font-weight: 600;
+}
+
+/* =========================== DARK MODE: FOOTER =========================== */
+/* Make footer darker in dark mode */
+
+body.dark-mode footer {
+    background: #0F172A;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Footer gradient text - enhance the glow */
+body.dark-mode .footer-gradient {
+    text-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
 }
 
 /* =========================== FADE IN ANIMATION =========================== */
@@ -1382,4 +1620,37 @@ footer p {
         box-shadow: none;
         border: 1px solid var(--border-color);
     }
+}
+
+/* =========================== DARK MODE: SCROLLBAR =========================== */
+
+::webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--light-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+/* Dark mode scrollbar */
+body.dark-mode::-webkit-scrollbar-track {
+    background: #1A202C;
+}
+/* =========================== STATS CARDS =========================== */
+body.dark-mode::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 6px;
+}
+
+body.dark-mode::-webkit-slider-thumb:hover {
+    background: var(--primary-color);
 }
