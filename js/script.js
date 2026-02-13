@@ -56,6 +56,19 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+// ================== LOGO CLICK HANDLER =====================
+// Handles clicking the logo to return to home page
+
+document.addEventListener('DOMContentLoaded', function() {
+    const logo = document.getElementById('logo');
+
+    if (logo) {
+        logo.addEventListener('click', function() {
+            window.location.href = '/'
+        });
+    }
+});
+
 // ================== MOBILE MENU TOGGLE =====================
 // Makes the hamburger menu work on mobile device
 
@@ -128,7 +141,7 @@ window.addEventListener('scroll', () => {
 /* ============================== SCROLL PROGRESS BAR =========================== */
 window.addEventListener('scroll', () => {
     const scrollProgress = document.querySelector('.scroll-progress-bar');
-    const scrollTop = window.pageYOffset || documentElement.scrollTop;
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     const scrollPercentage  = (scrollTop / scrollHeight) * 100;
 
@@ -215,9 +228,9 @@ window.addEventListener('scroll', () => {
 // Handles contact form submission and sends email using EmailJS service
 
 // EMAILJS CREDENTIALS
-const EMAILJS_PUBLIC_KEY = "dvTwS8mDyP75f3at1";
-const EMAILJS_SERVICE_ID = "service_zk0yz9a";
-const EMAILJS_TEMPLATE_ID = "template_m39jcyo";
+const EMAILJS_PUBLIC_KEY = "PLACEHOLDER_FOR_NOW";
+const EMAILJS_SERVICE_ID = "PLACEHOLDER_FOR_NOW";
+const EMAILJS_TEMPLATE_ID = "PLACEHOLDER_FOR_NOW";
 
 if (typeof emailjs !== 'undefined') {
     emailjs.init(EMAILJS_PUBLIC_KEY);

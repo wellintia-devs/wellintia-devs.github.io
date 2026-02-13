@@ -33,15 +33,15 @@ HOW TO CUSTOMIZE?
     --secondary-color: #764BA2; /* Darker purple - used for hover states */
 
     /* Text colors */
-    --dark-text: #2D3748; /* Almost black - used for main text */
-    --medium-text: #718096; /* Gray - used for secondary text */
+    --dark-text: #1E293B; /* Almost black - used for main text */
+    --medium-text: #475569; /* Gray - used for secondary text */
 
     /* Background colors */
-    --light-bg: #F7FAFC; /* Very light gray - page background */
+    --light-bg: #F1F5F9; /* Very light gray - page background */
     --card-bg: #FFFFFF; /* White - used for cards and sections */
 
     /* Border and line colors */
-    --border-color: #E2E8F0; /* Light gray - used for borders and dividers */
+    --border-color: #; /* Light gray - used for borders and dividers */
 
     /* Spacing unit - used for consistent spacing throughout the site */
     --spacing-unit: 8px;
@@ -55,14 +55,14 @@ HOW TO CUSTOMIZE?
 /* Override the light mode colors when dark mode is active */
 
 body.dark-mode {
-    --light-bg: #1A202C; /* Dark blue-gray for page background */
-    --card-bg: #2D3748; /* Slightly lighter for cards */
+    --light-bg: #0F172A; /* Dark blue-gray for page background */
+    --card-bg: #1E293B; /* Slightly lighter for cards */
 
-    --dark-text: #F7FAFC; /* Almost white for main text */
-    --medium-text: #CBD5E0; /* Light gray for secondary text */
+    --dark-text: #F1F5F9; /* Almost white for main text */
+    --medium-text: #94A3B8; /* Light gray for secondary text */
 
     /* Border color for dark backgrounds */
-    --border-color: #4A5568;
+    --border-color: #475569;
 }
 
 /* =========================== (BODY) GLOBAL STYLES =========================== */
@@ -95,7 +95,7 @@ body {
     left: 0;
     width: 100%;
     height: 100vh; /* Full viewport height */
-    background: white;
+    background: var(--card-bg);
     display: flex;
     justify-content: center; /* Center the spinner horizontally */
     align-items: center; /* Center the spinner vertically and horizontally */
@@ -1176,6 +1176,13 @@ body.dark-mode .project-links a:hover {
     z-index: 2;
 }
 
+body.dark-mode .project-category {
+    background: #334155;  /* Dark slate */
+    color: #E0E7FF;  /* Very light purple */
+    border: 1px solid #475569;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
 /* =========================== SKILLS SECTION =========================== */
 /* Grid for skill categories */
 .skills-grid {
@@ -1688,7 +1695,7 @@ body.dark-mode::-webkit-scrollbar-thumb {
     border-radius: 6px;
 }
 
-body.dark-mode::-webkit-slider-thumb:hover {
+body.dark-mode::-webkit-scrollbar-thumb:hover {
     background: var(--primary-color);
 }
 

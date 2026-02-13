@@ -56,34 +56,33 @@
 
     <!--================== EXTERNAL CSS FILE =====================-->
     <!-- Links to separate CSS file for all styling-->
-    <link rel="stylesheet" href="css/style.css">
     <link rel="preload" href="css/style.css" as="style">
-    <script type="application/ld+json">
-        <noscript>
-      <style>.loading { display: none; }</style>
-      <div class="no-js-warning">Please enable JavaScript for the best experience.</div>
-    </noscript>
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Nowell Intia",
-      "jobTitle": "Computer Science Student",
-      "url": "https://wellintia-devs.github.io/",
-      "sameAs": [
-        "https://github.com/NowellIntia23",
-        "https://www.linkedin.com/in/nowell-intia/"
-      ]
-    }
-    </script>
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Fallback for users without JavaScript -->
+     <noscript>
+        <style>.loading {display:none; }</style>
+        <div class="no-js-warning"> Please enable JavaScript for the best experience</div>
+     </noscript>
+
+     <!-- Structured data for search engines -->
+      <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Nowell Intia",
+            "jobTitle": "Computer Science Student",
+            "url": "https://wellintia-devs.github.io/",
+            "sameAs": [
+            "https://github.com/NowellIntia23",
+            "https://www.linkedin.com/in/nowell-intia/"
+            ]
+        }
+      </script>
     </head>
 
 <body>
 
-    <script>
-        document.getElementById('logo').addEventListener('click', function() {
-            window.location.href = '/';
-        });
-    </script>
     <div class="scroll-progress-bar"></div>
     
     <!-- ================== LOADING SCREEN ===============-->
