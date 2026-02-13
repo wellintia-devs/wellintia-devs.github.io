@@ -228,9 +228,9 @@ window.addEventListener('scroll', () => {
 // Handles contact form submission and sends email using EmailJS service
 
 // EMAILJS CREDENTIALS
-const EMAILJS_PUBLIC_KEY = "PLACEHOLDER_FOR_NOW";
-const EMAILJS_SERVICE_ID = "PLACEHOLDER_FOR_NOW";
-const EMAILJS_TEMPLATE_ID = "PLACEHOLDER_FOR_NOW";
+const EMAILJS_PUBLIC_KEY = "dvTwS8mDyP75f3at1";
+const EMAILJS_SERVICE_ID = "service_zk0yz9a";
+const EMAILJS_TEMPLATE_ID = "template_m39jcyo";
 
 if (typeof emailjs !== 'undefined') {
     emailjs.init(EMAILJS_PUBLIC_KEY);
