@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (logo) {
         logo.addEventListener('click', function() {
-            window.location.href = '/'
+            window.scrollTo({top: 0, behavior: 'smooth'});
         });
     }
 });
