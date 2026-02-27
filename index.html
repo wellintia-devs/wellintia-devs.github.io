@@ -7,7 +7,6 @@
 
     <!-- Makes website responsive on mobile devices-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <!-- Title that appears in browser tab -->
     <title> Nowell Intia - Portfolio</title>
 
@@ -75,6 +74,61 @@
             ]
         }
       </script>
+
+      <!-- ================== PRINT SAFETY STYLES ==================-->
+    <style>
+        @media print {
+            /* Force all scroll-animated elements to be visible */
+            .section-header,
+            .about-text,
+            .about-stats,
+            .project-card,
+            .hero-greeting,
+            .hero-content,
+            .skill-item,
+            .fade-in {
+                opacity: 1 !important;
+                transform: none !important;
+                visibility: visible !important;
+                animation-fill-mode: none !important;
+            }
+            /* Kill all animations during print */
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* "Save as PDF" button — only visible on screen, never in PDF */
+        .print-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 9998;
+            background: linear-gradient(135deg, #667EEA, #764BA2);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .print-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 28px rgba(102, 126, 234, 0.5);
+        }
+        @media print {
+            .print-btn { display: none !important; }
+        }
+    </style>
+
     </head>
 
 <body>
@@ -83,6 +137,15 @@
         <style>.loading {display:none; }</style>
         <div class="no-js-warning"> Please enable JavaScript for the best experience</div>
      </noscript>
+
+     <!-- ================== SAVE AS PDF BUTTON ==================-->
+    <button class="print-btn" onclick="window.print()" aria-label="Save page as PDF">
+        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
+        </svg>
+        Save as PDF
+    </button>
 
     <div class="scroll-progress-bar"></div>
     

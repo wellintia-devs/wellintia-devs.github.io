@@ -1640,30 +1640,563 @@ body.dark-mode .footer-gradient {
         height: 45px;
     }
 }
-
 /* =========================== PRINT STYLES =========================== */
-/* Styles for when page is printed */
+/* How to use: Open site in Chrome → click "Save as PDF" button        */
+/* Or: File > Print > Change destination to "Save as PDF"              */
+
 @media print {
-    /* Hide navigation and loading screen */
+
+    /* ============================================================
+       1. PAGE SETUP
+       Define paper size and margins ONCE.
+       (Having two @page blocks causes conflicts — so only one!)
+    ============================================================= */
+    @page {
+        size: A4 portrait;
+        margin: 1.5cm;
+    }
+
+    /* ============================================================
+       2. TELL THE BROWSER TO PRINT COLORS & BACKGROUNDS
+       Without this, Chrome strips all background colors/images.
+       The <meta> tag version in HTML does nothing — this CSS
+       property is the correct way to set it.
+    ============================================================= */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    /* ============================================================
+       3. KILL ALL ANIMATIONS & TRANSITIONS
+       Must be done BEFORE fixing visibility (step 4 below).
+       If animations are still active, elements stay frozen in
+       their invisible starting state.
+    ============================================================= */
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        animation-duration: 0.01ms !important;
+        animation-fill-mode: none !important;
+    }
+
+    /* ============================================================
+       4. THE MOST CRITICAL FIX — FORCE INVISIBLE ELEMENTS VISIBLE
+
+       YOUR SITE HAS A PROBLEM: These elements all start hidden
+       (opacity: 0) and only appear when JavaScript adds ".visible"
+       after you scroll. When printing, JS may never fire, so
+       entire sections show as BLANK WHITE SPACE in the PDF.
+
+       This fix forces them all visible for print only.
+    ============================================================= */
+    .section-header,
+    .about-text,
+    .about-stats,
+    .project-card,
+    .hero-greeting,
+    .hero-content,
+    .skill-item,
+    .fade-in {
+        opacity: 1 !important;
+        transform: none !important;
+        visibility: visible !important;
+    }
+
+    /* ============================================================
+       5. HIDE ELEMENTS THAT DON'T BELONG IN A PDF
+    ============================================================= */
     nav,
     .loading,
-    .menu-toggle {
-        display: none;
+    .menu-toggle,
+    .scroll-progress-bar,
+    .dark-mode-toggle,
+    .skip-link,
+    .contact-form,
+    .hero-buttons,
+    .contact-buttons,
+    .no-js-warning,
+    .print-btn {
+        display: none !important;
     }
 
-    /* Ensure white background */
+    /* ============================================================
+       6. GLOBAL COLOR RESET
+       We do NOT use "* { color: #000 }" — that erases all color
+       hierarchy. Instead we reset just the body and cards, then
+       restore accent colors individually in step 7.
+    ============================================================= */
     body {
-        background: white;
+        background: #ffffff !important;
+        color: #1E293B !important;
+        font-size: 11pt;
+        line-height: 1.5;
     }
 
-    /* Remove shadow when printing */
     .project-card,
     .skill-category,
     .stat-card,
-    .contact-form {
-        box-shadow: none;
-        border: 1px solid var(--border-color);
+    .contact-content,
+    .about-content,
+    footer {
+        background: #ffffff !important;
+        color: #1E293B !important;
     }
+
+    /* ============================================================
+       7. RESTORE ACCENT COLORS
+       These elements should still have their purple/green color
+       so the PDF has visual structure, not just flat black text.
+    ============================================================= */
+
+    .section-subtitle {
+        color: #667EEA !important;
+    }
+
+    .skill-level {
+        color: #667EEA !important;
+    }
+
+    .tag {
+        color: #667EEA !important;
+        background: #F1F5F9 !important;
+        border: 1px solid #C7D2FE !important;
+    }
+
+    .status-badge {
+        color: #48BB78 !important;
+        background: #F0FFF4 !important;
+        border: 1px solid #9AE6B4 !important;
+    }
+
+    /* Gradient text can't print as gradient — fallback to solid purple */
+    .gradient-text,
+    .hero-title .gradient-text,
+    .footer-gradient,
+    .stat-number,
+    .logo {
+        background: none !important;
+        -webkit-text-fill-color: #667EEA !important;
+        color: #667EEA !important;
+    }
+
+    /* ============================================================
+       8. HERO SECTION FIX
+       Problem: min-height: 100vh makes the hero fill an entire A4
+       page, pushing all your content to page 2+.
+    ============================================================= */
+    .hero {
+            min-height: auto !important;
+            padding: 30px 0 20px !important;
+            position: static !important;
+            overflow: visible !important;
+        }
+
+        .hero::before,
+        .hero::after {
+            display: none !important;
+            width: 0 !important;
+            height: 0 !important;
+            content: none !important;
+        }
+
+    .hero-container {
+        display: block !important;
+        text-align: left;
+    }
+
+    .hero-title {
+        font-size: 26pt;
+        margin-bottom: 8px;
+    }
+
+    .hero-subtitle,
+    .hero-description {
+        font-size: 11pt;
+        color: #475569 !important;
+    }
+
+    .hero-image {
+        display: none !important;
+    }
+
+    /* ============================================================
+       9. SECTIONS — LAYOUT & PAGE BREAKS
+    ============================================================= */
+    section {
+        padding: 24px 0 !important;
+        margin-bottom: 16px;
+        max-width: 100% !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    .section-header {
+        margin-bottom: 24px;
+        text-align: left;
+    }
+
+    .section-title {
+        font-size: 18pt;
+        color: #1E293B !important;
+    }
+
+    .section-description {
+        font-size: 10pt;
+        color: #475569 !important;
+        max-width: 100%;
+        margin: 0;
+    }
+
+    h1, h2, h3, h4 {
+        page-break-after: avoid;
+        break-after: avoid;
+        color: #1E293B !important;
+    }
+
+    /* ============================================================
+       10. ABOUT SECTION
+    ============================================================= */
+    .about-content {
+        display: block !important;
+    }
+
+    .about-text p {
+        font-size: 11pt;
+        color: #475569 !important;
+        margin-bottom: 10px;
+    }
+
+    .interest-tag {
+        background: #F1F5F9 !important;
+        color: #667EEA !important;
+        border: 1px solid #C7D2FE !important;
+        font-size: 10pt;
+    }
+
+    .about-stats {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-top: 16px;
+    }
+
+    .stat-card {
+        padding: 16px 12px;
+        border-radius: 8px;
+        border: 1px solid #E2E8F0 !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    .stat-label {
+        color: #475569 !important;
+        font-size: 10pt;
+    }
+
+    /* ============================================================
+       11. PROJECTS SECTION
+    ============================================================= */
+    .projects-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+
+    .project-card {
+        border-radius: 8px !important;
+        border: 1px solid #E2E8F0 !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    .project-image {
+        display: none !important;
+    }
+
+    .project-content {
+        padding: 16px;
+        gap: 10px;
+    }
+
+    .project-title {
+        font-size: 13pt;
+        color: #1E293B !important;
+    }
+
+    /* Remove the 3-line clamp so full descriptions show in PDF */
+    .project-description {
+        display: block !important;
+        -webkit-line-clamp: unset !important;
+        overflow: visible !important;
+        font-size: 10pt;
+        color: #475569 !important;
+    }
+
+    .project-link {
+        font-size: 10pt;
+        border: 1px solid #667EEA !important;
+        color: #667EEA !important;
+        background: none !important;
+        padding: 4px 10px !important;
+    }
+
+    /* Show the actual URL after external links (useful in a PDF) */
+    a[href^="http"]::after {
+        content: " (" attr(href) ")";
+        font-size: 8pt;
+        color: #94A3B8 !important;
+        word-break: break-all;
+    }
+
+    /* But NOT for internal anchor links like #about or #contact */
+    a[href^="#"]::after {
+        content: "" !important;
+
+        /* Suppress URLs inside social icon buttons.
+       .social-link is a small circle with no room for a URL.
+       Without this rule, the URL wraps into a vertical column
+       of characters that breaks the entire contact section. */
+    .social-link::after,
+    .social-link a::after {
+        content: "" !important;
+        display: none !important;
+    }
+    }
+
+    /* ============================================================
+       12. SKILLS SECTION
+    ============================================================= */
+    .skills-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+
+    .skill-category {
+        padding: 16px;
+        border-radius: 8px;
+        border: 1px solid #E2E8F0 !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    .skill-category-title {
+        font-size: 11pt;
+        color: #1E293B !important;
+        margin-bottom: 10px;
+    }
+
+    .skill-item {
+        padding: 5px 0;
+        border-bottom: 1px solid #F1F5F9 !important;
+    }
+
+    .skill-name {
+        font-size: 10pt;
+        color: #1E293B !important;
+    }
+
+    /* ============================================================
+       13. CONTACT SECTION
+    ============================================================= */
+    .contact-text {
+        font-size: 11pt;
+        color: #475569 !important;
+    }
+
+    .location-badge {
+        font-size: 10pt;
+        color: #475569 !important;
+        margin-bottom: 10px;
+    }
+
+    .social-links {
+        margin-top: 16px;
+        display: flex;
+        gap: 16px;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow: hidden;
+        max-height: 70px;
+    }
+
+    .social-link {
+        border: 1px solid #E2E8F0 !important;
+        box-shadow: none !important;
+        background: #F8FAFC !important;
+        padding: 8px;
+        border-radius: 8px;
+    }
+
+    .social-link svg {
+        color: #667EEA !important;
+        fill: #667EEA !important;
+    }
+
+    /* ============================================================
+       14. FOOTER
+    ============================================================= */
+    footer {
+        border-top: 2px solid #667EEA !important;
+        padding: 16px 0 !important;
+        margin-top: 24px;
+        text-align: center;
+        font-size: 10pt;
+    }
+
+    footer p {
+        color: #475569 !important;
+    }
+
+    /* ============================================================
+       15. DARK MODE PRINT OVERRIDES
+
+       HOW THIS WORKS:
+       Your dark mode uses a class — body.dark-mode — added by
+       JavaScript when the user toggles it. That class still exists
+       on the element when you print, so we can target it here
+       inside @media print and it works perfectly.
+
+       All rgba() colors are converted to solid hex values here
+       because transparent colors can be unreliable in print.
+    ============================================================= */
+
+    /* --- PAGE BACKGROUND --- */
+    body.dark-mode {
+        background: #0F172A !important;
+        color: #F1F5F9 !important;
+    }
+
+    /* --- CARDS & CONTAINERS --- */
+    body.dark-mode .project-card,
+    body.dark-mode .skill-category,
+    body.dark-mode .stat-card,
+    body.dark-mode .contact-content,
+    body.dark-mode .about-content,
+    body.dark-mode footer {
+        background: #1E293B !important;
+        color: #F1F5F9 !important;
+    }
+
+    /* --- HEADINGS & STRONG TEXT --- */
+    body.dark-mode h1,
+    body.dark-mode h2,
+    body.dark-mode h3,
+    body.dark-mode h4,
+    body.dark-mode .section-title,
+    body.dark-mode .project-title,
+    body.dark-mode .skill-category-title,
+    body.dark-mode .skill-name {
+        color: #F1F5F9 !important;
+    }
+
+    /* --- SECONDARY / BODY TEXT --- */
+    body.dark-mode p,
+    body.dark-mode .about-text p,
+    body.dark-mode .project-description,
+    body.dark-mode .hero-subtitle,
+    body.dark-mode .hero-description,
+    body.dark-mode .section-description,
+    body.dark-mode .stat-label,
+    body.dark-mode .contact-text,
+    body.dark-mode .location-badge,
+    body.dark-mode footer p {
+        color: #94A3B8 !important;
+    }
+
+    /* --- ACCENT LABELS (purple) --- */
+    /* In dark mode, the lighter purple #A5B4FC is used instead of
+       #667EEA because it has better contrast on dark backgrounds */
+    body.dark-mode .section-subtitle,
+    body.dark-mode .skill-level {
+        color: #A5B4FC !important;
+    }
+
+    /* --- GRADIENT TEXT FALLBACK --- */
+    /* Gradients can't print reliably, so we use a solid light purple */
+    body.dark-mode .gradient-text,
+    body.dark-mode .hero-title .gradient-text,
+    body.dark-mode .footer-gradient,
+    body.dark-mode .logo {
+        background: none !important;
+        -webkit-text-fill-color: #A5B4FC !important;
+        color: #A5B4FC !important;
+    }
+
+    /* --- STAT NUMBERS (2+, 5+, 6+, 100%) --- */
+    body.dark-mode .stat-number {
+        background: none !important;
+        -webkit-text-fill-color: #A5B4FC !important;
+        color: #A5B4FC !important;
+    }
+
+    /* --- BORDERS --- */
+    body.dark-mode .project-card,
+    body.dark-mode .skill-category,
+    body.dark-mode .stat-card {
+        border: 1px solid #475569 !important;
+        box-shadow: none !important;
+    }
+
+    body.dark-mode .skill-item {
+        border-bottom: 1px solid #334155 !important;
+    }
+
+    /* --- TECHNOLOGY TAGS (C#, Java, Figma, etc.) --- */
+    body.dark-mode .tag {
+        background: #2D3A56 !important;   /* solid version of rgba(102,126,234,0.15) */
+        color: #A5B4FC !important;
+        border: 1px solid #475569 !important;
+    }
+
+    /* --- INTEREST TAGS (Frontend Dev, Mobile, UI/UX) --- */
+    body.dark-mode .interest-tag {
+        background: #2D3A56 !important;
+        color: #A5B4FC !important;
+        border: 1px solid #475569 !important;
+    }
+
+    /* --- STATUS BADGE ("Open to Internship") --- */
+    body.dark-mode .status-badge {
+        background: #1A2E24 !important;   /* solid version of rgba(72,187,120,0.15) */
+        color: #68D391 !important;
+        border: 1px solid #2D6A4A !important;
+    }
+
+    /* --- PROJECT LINKS --- */
+    body.dark-mode .project-link {
+        color: #A5B4FC !important;
+        border: 1px solid #475569 !important;
+        background: #253047 !important;
+    }
+
+    /* --- URL TEXT AFTER LINKS (the printed URLs) --- */
+    body.dark-mode a[href^="http"]::after {
+        color: #64748B !important;
+    }
+
+    /* --- SOCIAL LINK ICONS --- */
+    body.dark-mode .social-link {
+        background: #1E293B !important;
+        border: 1px solid #475569 !important;
+    }
+
+    body.dark-mode .social-link svg {
+        color: #A5B4FC !important;
+        fill: #A5B4FC !important;
+    }
+
+    /* --- FOOTER BORDER --- */
+    body.dark-mode footer {
+        border-top: 2px solid #A5B4FC !important;
+    }
+
 }
 
 /* =========================== DARK MODE: SCROLLBAR =========================== */
@@ -1698,12 +2231,3 @@ body.dark-mode::-webkit-scrollbar-thumb {
 body.dark-mode::-webkit-scrollbar-thumb:hover {
     background: var(--primary-color);
 }
-
-section {
-      page-break-inside: avoid;
-    }
-    
-    .project-card,
-    .skill-category {
-      page-break-inside: avoid;
-    }
