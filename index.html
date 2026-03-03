@@ -99,34 +99,6 @@
             }
         }
 
-        /* "Save as PDF" button — only visible on screen, never in PDF */
-        .print-btn {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            z-index: 9998;
-            background: linear-gradient(135deg, #667EEA, #764BA2);
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 30px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .print-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 28px rgba(102, 126, 234, 0.5);
-        }
-        @media print {
-            .print-btn { display: none !important; }
-        }
     </style>
 
     </head>
