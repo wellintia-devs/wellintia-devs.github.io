@@ -15,9 +15,12 @@ HOW TO CUSTOMIZE?
 /* Removed default browser styling so all browsers look consistent */
 
 * {
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
-    box-sizing: border-box; /* Make width and height include padding and border */
+    margin: 0;
+    /* Remove default margin */
+    padding: 0;
+    /* Remove default padding */
+    box-sizing: border-box;
+    /* Make width and height include padding and border */
 }
 
 /* =========================== CSS VARIABLES (COLOR PALETTE) =========================== */
@@ -29,25 +32,33 @@ HOW TO CUSTOMIZE?
     --primary-gradient: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
 
     /* Main colors */
-    --primary-color: #667EEA; /* Purple-blue - used for buttons, links, accents */
-    --secondary-color: #764BA2; /* Darker purple - used for hover states */
+    --primary-color: #667EEA;
+    /* Purple-blue - used for buttons, links, accents */
+    --secondary-color: #764BA2;
+    /* Darker purple - used for hover states */
 
     /* Text colors */
-    --dark-text: #1E293B; /* Almost black - used for main text */
-    --medium-text: #475569; /* Gray - used for secondary text */
+    --dark-text: #1E293B;
+    /* Almost black - used for main text */
+    --medium-text: #475569;
+    /* Gray - used for secondary text */
 
     /* Background colors */
-    --light-bg: #F1F5F9; /* Very light gray - page background */
-    --card-bg: #FFFFFF; /* White - used for cards and sections */
+    --light-bg: #F1F5F9;
+    /* Very light gray - page background */
+    --card-bg: #FFFFFF;
+    /* White - used for cards and sections */
 
     /* Border and line colors */
-    --border-color: #E2E8F0; /* Light gray - used for borders and dividers */
+    --border-color: #E2E8F0;
+    /* Light gray - used for borders and dividers */
 
     /* Spacing unit - used for consistent spacing throughout the site */
     --spacing-unit: 8px;
 
     /* Status colors */
-    --success-green: #48BB78; /* Green - for success/available status */
+    --success-green: #48BB78;
+    /* Green - for success/available status */
 }
 
 /* =========================== DARK MODE COLORS =========================== */
@@ -55,11 +66,15 @@ HOW TO CUSTOMIZE?
 /* Override the light mode colors when dark mode is active */
 
 body.dark-mode {
-    --light-bg: #0F172A; /* Dark blue-gray for page background */
-    --card-bg: #1E293B; /* Slightly lighter for cards */
+    --light-bg: #0F172A;
+    /* Dark blue-gray for page background */
+    --card-bg: #1E293B;
+    /* Slightly lighter for cards */
 
-    --dark-text: #F1F5F9; /* Almost white for main text */
-    --medium-text: #94A3B8; /* Light gray for secondary text */
+    --dark-text: #F1F5F9;
+    /* Almost white for main text */
+    --medium-text: #94A3B8;
+    /* Light gray for secondary text */
 
     /* Border color for dark backgrounds */
     --border-color: #475569;
@@ -69,37 +84,48 @@ body.dark-mode {
 /* Applies to the entire website */
 
 body {
-    font-family: 'DM Sans', sans-serif; /* Clean, modern font - main font for body text*/
-    color: var(--dark-text); /* Use dark text color for readability - default text color*/
-    background-color: var(--light-bg); /* Light background color for the whole page - page background color */
-    line-height: 1.6; /* Improve readability by increasing line spacing - default line height - Space between lines of text */
-    overflow-x: hidden; /* Prevent horizontal scrolling on small screens - hide horizontal scrollbar */
+    font-family: 'DM Sans', sans-serif;
+    /* Clean, modern font - main font for body text*/
+    color: var(--dark-text);
+    /* Use dark text color for readability - default text color*/
+    background-color: var(--light-bg);
+    /* Light background color for the whole page - page background color */
+    line-height: 1.6;
+    /* Improve readability by increasing line spacing - default line height - Space between lines of text */
+    overflow-x: hidden;
+    /* Prevent horizontal scrolling on small screens - hide horizontal scrollbar */
 }
 
 /* Respect user's motion preferences for WCAG 2.1 compliance */
 @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
+
+    *,
+    *::before,
+    *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
-      }
     }
+}
 
 /* =========================== LOADING SCREEN =========================== */
 /* The animated spinner that shows while the page is loading */
 .loading {
-    position: fixed; /* Stay in place while scrolling */
+    position: fixed;
+    /* Stay in place while scrolling */
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh; /* Full viewport height */
+    height: 100vh;
+    /* Full viewport height */
     background: var(--card-bg);
     display: flex;
-    justify-content: center; /* Center the spinner horizontally */
-    align-items: center; /* Center the spinner vertically and horizontally */
-    z-index: 9999; /* Ensure it appears above all other content */
+    justify-content: center;
+    /* Center the spinner horizontally */
+    align-items: center;
+    /* Center the spinner vertically and horizontally */
+    z-index: 9999;
+    /* Ensure it appears above all other content */
 }
 
 /* When loading is done, fades out the loading screen */
@@ -120,16 +146,28 @@ body.dark-mode .loading {
 .loader {
     width: 50px;
     height: 50px;
-    border: 5px solid var(--border-color); /* Light gray border */
-    border-top: 5px solid var(--primary-color); /* Primary color for the spinning */
-    border-radius: 50%; /* Make it a circle */
-    animation: spin 1s linear infinite; /* Spin animation continuously */
+    border: 5px solid var(--border-color);
+    /* Light gray border */
+    border-top: 5px solid var(--primary-color);
+    /* Primary color for the spinning */
+    border-radius: 50%;
+    /* Make it a circle */
+    animation: spin 1s linear infinite;
+    /* Spin animation continuously */
 }
 
 /* Animation for the loader spinner */
 @keyframes spin {
-    from { transform: rotate(0deg); } /* Start at 0 degrees */
-    to { transform: rotate(360deg); } /* Rotate full circle to 360 degrees */
+    from {
+        transform: rotate(0deg);
+    }
+
+    /* Start at 0 degrees */
+    to {
+        transform: rotate(360deg);
+    }
+
+    /* Rotate full circle to 360 degrees */
 }
 
 
@@ -139,11 +177,14 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.95); /* Slightly transparent background */
-    backdrop-filter: blur(10px); /* Blur effect for modern look */
+    background: rgba(255, 255, 255, 0.95);
+    /* Slightly transparent background */
+    backdrop-filter: blur(10px);
+    /* Blur effect for modern look */
     padding: 20px 0;
     z-index: 1000;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+    /* Subtle shadow for depth */
     animation: slideDown 0.6s ease-out;
     transition: box-shadow 0.3s ease;
 }
@@ -155,7 +196,7 @@ nav {
     left: 0;
     height: 3px;
     background: var(--primary-gradient);
-    width: 0%;  
+    width: 0%;
     z-index: 10000;
     transition: width 0.1s ease-out;
     box-shadow: 0 2px 10px rgba(102, 126, 234, 0.5);
@@ -168,17 +209,21 @@ body.dark-mode .scroll-progress-bar {
 
 /* Dark mode: Override navbar background to dark color */
 body.dark-mode nav {
-    background: rgba(45, 55, 72, 0.95); /* Dark blue-gray with 95% opacity */
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow for visibility */
+    background: rgba(45, 55, 72, 0.95);
+    /* Dark blue-gray with 95% opacity */
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    /* Stronger shadow for visibility */
 }
 
 body.dark-mode nav.scrolled {
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4); /* Even stronger shadow */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+    /* Even stronger shadow */
 }
 
 /* Enhanced shadow when user scrolls down */
 nav.scrolled {
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Stronger shadow when scrolled */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    /* Stronger shadow when scrolled */
 }
 
 /* Animation: navbar slides down from top */
@@ -187,6 +232,7 @@ nav.scrolled {
         transform: translateY(-100%);
         opacity: 0;
     }
+
     to {
         transform: translateY(0);
         opacity: 1;
@@ -195,39 +241,54 @@ nav.scrolled {
 
 /* Container for navigation content (logo + menu) */
 .nav-container {
-    max-width: 1200px; /* Limit width for better readability on large screens */
-    margin: 0 auto; /* Center the container */
-    padding: 0 32px; /* Horizontal padding for spacing on smaller screens */
-    display: flex; /* Use flexbox for layout */
-    justify-content: space-between; /* Space between logo and menu */
-    align-items: center; /* Vertically center items */
+    max-width: 1200px;
+    /* Limit width for better readability on large screens */
+    margin: 0 auto;
+    /* Center the container */
+    padding: 0 32px;
+    /* Horizontal padding for spacing on smaller screens */
+    display: flex;
+    /* Use flexbox for layout */
+    justify-content: space-between;
+    /* Space between logo and menu */
+    align-items: center;
+    /* Vertically center items */
 }
 
 /* ============================== LOGO =========================== */
 .logo {
-    font-family: 'Poppins', sans-serif; /* Bold, modern font for logo */
-    font-size: 24px; /* Larger font size for logo */
-    font-weight: 700; /* Bold weight for logo */
+    font-family: 'Poppins', sans-serif;
+    /* Bold, modern font for logo */
+    font-size: 24px;
+    /* Larger font size for logo */
+    font-weight: 700;
+    /* Bold weight for logo */
     /* Gradient text effect for logo */
-    background: var(--primary-gradient); /* Use the defined gradient for the logo */
-    -webkit-background-clip: text; /* Clip the background to the text */
-    -webkit-text-fill-color: transparent; /* Make the text itself transparent to show the gradient */
+    background: var(--primary-gradient);
+    /* Use the defined gradient for the logo */
+    -webkit-background-clip: text;
+    /* Clip the background to the text */
+    -webkit-text-fill-color: transparent;
+    /* Make the text itself transparent to show the gradient */
     background-clip: text;
-    transition: transform 0.3s ease; /* Smooth transition for hover effect */
-    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: transform 0.3s ease;
+    /* Smooth transition for hover effect */
+    cursor: pointer;
+    /* Change cursor to pointer on hover */
 }
 
 /* Logo hover effect: slight scale up */
 .logo:hover {
-    transform: scale(1.05); /* Scale up the logo slightly on hover */
+    transform: scale(1.05);
+    /* Scale up the logo slightly on hover */
 }
 
 /* Improved keyboard navigation */
 .nav-links a:focus-visible {
-      outline: 2px solid var(--primary-color);
-      outline-offset: 4px;
-      border-radius: 4px;
-    }
+    outline: 2px solid var(--primary-color);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
 
 /* =========================== NAVIGATION LINKS =========================== */
 .nav-links {
@@ -263,7 +324,8 @@ nav.scrolled {
 }
 
 .nav-links a:hover::after {
-    width: 100%; /*Underline expands to full width*/
+    width: 100%;
+    /*Underline expands to full width*/
 }
 
 /* Active link gets a dot indicator */
@@ -300,15 +362,18 @@ nav.scrolled {
 
 /* When menu is open (active), transform to X shape */
 .menu-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(8px, 8px); /* Top line rotates */
+    transform: rotate(45deg) translate(8px, 8px);
+    /* Top line rotates */
 }
 
 .menu-toggle.active span:nth-child(2) {
-    opacity: 0; /*Middle line disappears */
+    opacity: 0;
+    /*Middle line disappears */
 }
 
 .menu-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px); /* Bottom line rotates */
+    transform: rotate(-45deg) translate(7px, -7px);
+    /* Bottom line rotates */
 }
 
 /* =========================== MOBILE RESPONSIVE NAVIGATION =========================== */
@@ -326,9 +391,9 @@ nav.scrolled {
     }
 
     body.dark-mode .nav-links {
-    background: rgba(45, 55, 72, 0.98);
-    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.4);
-}
+        background: rgba(45, 55, 72, 0.98);
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.4);
+    }
 
     /* Show hamburger menu on mobile phone */
     .menu-toggle {
@@ -339,29 +404,39 @@ nav.scrolled {
     .nav-links {
         position: fixed;
         top: 0;
-        right: -100%; /* Hidden off-screen to the right */
-        height: 100vh; /* Full screen height */
-        width: 70%; /* Takes 70% of screen width */
-        max-width: 300px; /* But no more than 300px */
+        right: -100%;
+        /* Hidden off-screen to the right */
+        height: 100vh;
+        /* Full screen height */
+        width: 70%;
+        /* Takes 70% of screen width */
+        max-width: 300px;
+        /* But no more than 300px */
         background: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(10px);
-        flex-direction: column; /* Stacks links vertically */
+        flex-direction: column;
+        /* Stacks links vertically */
         padding: 100px 40px 40px;
         gap: 30px;
-        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1); /* Shadow on left side */
-        transition: right 0.3s ease; /* Smooth slide animation*/
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+        /* Shadow on left side */
+        transition: right 0.3s ease;
+        /* Smooth slide animation*/
     }
 
     body.dark-mode .nav-links {
-        background: rgba(45, 55, 72, 0.98); /* Dark background for mobile menu */
-        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.4); /* Stronger shadow */
+        background: rgba(45, 55, 72, 0.98);
+        /* Dark background for mobile menu */
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.4);
+        /* Stronger shadow */
     }
 
     /* When menu is active, slide into view */
     .nav-links.active {
-        right: 0; /* Moves to the right edge of the screen */
+        right: 0;
+        /* Moves to the right edge of the screen */
     }
-    
+
     /* Adjust active indicator position for mobile */
     .nav-links a.active::before {
         left: -20px;
@@ -382,10 +457,12 @@ nav.scrolled {
     justify-content: center;
 
     /* Button styling */
-    background: var(--light-bg); /* Uses theme background */
+    background: var(--light-bg);
+    /* Uses theme background */
     border: 2px solid var(--border-color);
-    border-radius: 50%; 
-    cursor: pointer; /* To show that it is clickable */
+    border-radius: 50%;
+    cursor: pointer;
+    /* To show that it is clickable */
 
     transition: all 0.3s ease;
 
@@ -411,16 +488,19 @@ nav.scrolled {
 
 /* By default. show moon icon */
 .sun-icon {
-    display: none; /* Hidden in light mode*/
+    display: none;
+    /* Hidden in light mode*/
 }
 
 .moon-icon {
-    display: block; /* Visible in light mode */
+    display: block;
+    /* Visible in light mode */
 }
 
 /* When dark mode is active, swap icons */
 body.dark-mode .sun-icon {
-    display: block; /* Show sun in dark mode */
+    display: block;
+    /* Show sun in dark mode */
 }
 
 body.dark-mode .moon-icon {
@@ -430,11 +510,13 @@ body.dark-mode .moon-icon {
 
 /* =========================== HERO SECTION (HOME PAGE) =========================== */
 .hero {
-    min-height: 100vh; /* Full screen height */
+    min-height: 100vh;
+    /* Full screen height */
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 120px 32px 80px; /* Padding around content */
+    padding: 120px 32px 80px;
+    /* Padding around content */
     position: relative;
     overflow: hidden;
 }
@@ -448,17 +530,22 @@ body.dark-mode .moon-icon {
     width: 800px;
     height: 800px;
     background: var(--primary-gradient);
-    opacity: 0.1; /*Very subtle */
-    border-radius: 50%; /* Circular */
-    filter: blur(100px); /* Soft, blurred edges */
-    animation: float 20s ease-in-out infinite; /* Gentle floating animation */
+    opacity: 0.1;
+    /*Very subtle */
+    border-radius: 50%;
+    /* Circular */
+    filter: blur(100px);
+    /* Soft, blurred edges */
+    animation: float 20s ease-in-out infinite;
+    /* Gentle floating animation */
 }
 
 /* =========================== DARK MODE: HERO SECTION =========================== */
 /* Animated background circle for dark mode */
 
 body.dark-mode .hero::before {
-    background: radial-gradient(circle, rgba(102, 126, 234, 0.15) 0%, transparent 70%) /* Dimmer purple for dark backgrounds */
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.15) 0%, transparent 70%)
+        /* Dimmer purple for dark backgrounds */
 }
 
 body.dark-mode .hero::after {
@@ -468,8 +555,17 @@ body.dark-mode .hero::after {
 /* FLoating animation for background effect */
 
 @keyframes float {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(-50px, -50px) scale(1.1); } /* Moves and slightly grows */
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(-50px, -50px) scale(1.1);
+    }
+
+    /* Moves and slightly grows */
 }
 
 /* Container for hero content (text + image) */
@@ -486,19 +582,22 @@ body.dark-mode .hero::after {
 
 /* Left side: Text content */
 .hero-content {
-    animation: fadeInUp 0.8s ease-out 0.2s both; /* Fades in and moves up */
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+    /* Fades in and moves up */
 }
 
 /* Fade in and move up animation */
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(30px); /* Starts below */
+        transform: translateY(30px);
+        /* Starts below */
     }
 
     to {
         opacity: 1;
-        transform: translateY(0); /* Ends in normal position */
+        transform: translateY(0);
+        /* Ends in normal position */
     }
 }
 
@@ -508,13 +607,17 @@ body.dark-mode .hero::after {
     color: var(--primary-color);
     font-weight: 500;
     margin-bottom: 16px;
-    opacity: 0; /* Starts invisible */
-    animation: fadeIn 0.6s ease-out 0.4s forwards; /* Fades in after delay */
+    opacity: 0;
+    /* Starts invisible */
+    animation: fadeIn 0.6s ease-out 0.4s forwards;
+    /* Fades in after delay */
 }
 
 /* Simple fade in animation */
 @keyframes fadeIn {
-    to { opacity: 1; }
+    to {
+        opacity: 1;
+    }
 }
 
 /* Main title (your name) */
@@ -539,7 +642,7 @@ body.dark-mode .hero::after {
     font-size: 20px;
     color: var(--medium-text);
     margin-bottom: 16px;
-    font-weight: 500; 
+    font-weight: 500;
 }
 
 /* Description Paragraph */
@@ -547,11 +650,12 @@ body.dark-mode .hero::after {
     font-size: 18px;
     color: var(--medium-text);
     margin-bottom: 40px;
-    line-height: 1.8; /* Extra space between lines for better readability */
+    line-height: 1.8;
+    /* Extra space between lines for better readability */
 }
 
 /* =========================== STATUS BADGE =========================== */
-/* Open to Internship Opportunities" badge*/
+/* Open to Job Opportunities" badge*/
 .status-badge {
     display: inline-flex;
     align-items: center;
@@ -564,7 +668,8 @@ body.dark-mode .hero::after {
     font-size: 14px;
     font-weight: 600;
     margin-bottom: 32px;
-    animation: pulse 2s ease-in-out infinite; /* Gentle pulsing effect */
+    animation: pulse 2s ease-in-out infinite;
+    /* Gentle pulsing effect */
 }
 
 /* Dark mode status badge */
@@ -587,31 +692,52 @@ body.dark-mode .status-badge {
 
 /* Pulse animation for badge */
 @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.02);}
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.02);
+    }
 }
 
 /* Blinking animation for green dot */
 @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; } /* Dims */
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    /* Dims */
 }
 
 /* =========================== BUTTONS =========================== */
 /* Container for buttons */
 .hero-buttons {
     display: flex;
-    gap: 16px; /* Space between buttons */
-    flex-wrap: wrap; /* Wraps on small screens */
+    gap: 16px;
+    /* Space between buttons */
+    flex-wrap: wrap;
+    /* Wraps on small screens */
 }
 
 /* Base button style */
 .btn {
     padding: 16px 32px;
-    border-radius: 8px; /* Rounded corners */
+    border-radius: 8px;
+    /* Rounded corners */
     font-weight: 600;
-    text-decoration: none; /* No underline */
-    transition: all 0.3s ease; /* Smooth hover effects */
+    text-decoration: none;
+    /* No underline */
+    transition: all 0.3s ease;
+    /* Smooth hover effects */
     cursor: pointer;
     display: inline-flex;
     align-items: center;
@@ -624,13 +750,16 @@ body.dark-mode .status-badge {
 .btn-primary {
     background: var(--primary-gradient);
     color: white;
-    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3); /* Purple shadow */
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+    /* Purple shadow */
 }
 
 /* Primary button hover effect: upward */
 .btn-primary:hover {
-    transform: translateY(-2px); /* Slightly lifts up*/
-    box-shadow: 0 6px 30px rgba(102, 126, 234, 0.4); /* Bigger shadow */
+    transform: translateY(-2px);
+    /* Slightly lifts up*/
+    box-shadow: 0 6px 30px rgba(102, 126, 234, 0.4);
+    /* Bigger shadow */
 }
 
 /* Secondary button (outline) */
@@ -659,7 +788,8 @@ body.dark-mode .status-badge {
 .profile-image-container {
     position: relative;
     width: 100%;
-    max-width: 400px; /* Limits size */
+    max-width: 400px;
+    /* Limits size */
     animation: fadeInUp 0.8s ease-out 0.4s both;
 }
 
@@ -667,9 +797,12 @@ body.dark-mode .status-badge {
 .profile-image {
     width: 100%;
     height: auto;
-    border-radius: 20px; /* Rounded corner */
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15); /* Large shadow */
-    object-fit: cover; /* Fits image nicely */
+    border-radius: 20px;
+    /* Rounded corner */
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    /* Large shadow */
+    object-fit: cover;
+    /* Fits image nicely */
     transition: transform 0.3s ease;
 }
 
@@ -689,7 +822,8 @@ body.dark-mode .profile-image-container::before {
 section {
     padding: 100px 32px;
     max-width: 1200px;
-    margin: 0 auto; /* Centers section */
+    margin: 0 auto;
+    /* Centers section */
 }
 
 /* =========================== SECTION HEADERS =========================== */
@@ -697,7 +831,8 @@ section {
 .section-header {
     text-align: center;
     margin-bottom: 60px;
-    opacity: 0; /* Starts invisible for animation*/ 
+    opacity: 0;
+    /* Starts invisible for animation*/
     transform: translateY(20px);
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
@@ -714,8 +849,10 @@ section {
     color: var(--primary-color);
     font-weight: 600;
     margin-bottom: 12px;
-    text-transform: uppercase; /* ALL CAPS */
-    letter-spacing: 1px; /* Space between lines */
+    text-transform: uppercase;
+    /* ALL CAPS */
+    letter-spacing: 1px;
+    /* Space between lines */
 }
 
 /* Main section title */
@@ -732,7 +869,8 @@ section {
     font-size: 18px;
     color: var(--medium-text);
     max-width: 600px;
-    margin: 0 auto; /*Centers description */
+    margin: 0 auto;
+    /*Centers description */
 }
 
 /* =========================== ABOUT SECTION =========================== */
@@ -764,7 +902,8 @@ section {
 /* Interest tags (Frontend Development, Backend, etc.) */
 .interest-tags {
     display: flex;
-    flex-wrap: wrap; /* Wraps to next line if needed */
+    flex-wrap: wrap;
+    /* Wraps to next line if needed */
     gap: 12px;
     margin-top: 30px;
 }
@@ -774,7 +913,8 @@ section {
     background: white;
     color: var(--primary-color);
     border: 2px solid var(--border-color);
-    border-radius: 25px; /* Rounded pill shape */
+    border-radius: 25px;
+    /* Rounded pill shape */
     font-size: 14px;
     font-weight: 600;
     transition: all 0.3s ease;
@@ -817,7 +957,8 @@ body.dark-mode .stat-card:hover {
 }
 
 body.dark-mode .stat-number {
-    color: var(--dark-text); /* Light text */
+    color: var(--dark-text);
+    /* Light text */
     text-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
 }
 
@@ -826,50 +967,65 @@ body.dark-mode .stat-number {
 
 /* Target the project image container */
 body.dark-mode .project-card img {
-    position: relative; /* Allows overlay positioning */
-    filter: brightness(0.7) contrast(1.1); /* Dims image by 30%, increases contrast slightly */
-    transition: all 0.3s ease; /* Smooth transition for hover */
+    position: relative;
+    /* Allows overlay positioning */
+    filter: brightness(0.7) contrast(1.1);
+    /* Dims image by 30%, increases contrast slightly */
+    transition: all 0.3s ease;
+    /* Smooth transition for hover */
 }
 
 /* Add a dark semi-transparent overlay using pseudo-element */
 body.dark-mode .project-card::before {
-    content: ""; /* Creates empty element */
-    position: absolute; /* Positions over the image */
+    content: "";
+    /* Creates empty element */
+    position: absolute;
+    /* Positions over the image */
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(
-        180deg, 
-        rgba(26, 32, 44, 0.3) 0%,     /* Subtle dark overlay at top */
-        rgba(26, 32, 44, 0.5) 100%    /* Stronger at bottom */
-    ); /* Gradient overlay darkens the image */
-    border-radius: 12px 12px 0 0; /* Matches card border radius (only top corners) */
-    pointer-events: none; /* Allows clicking through the overlay */
-    z-index: 1; /* Places overlay above image */
-    transition: opacity 0.3s ease; /* Smooth fade transition */
+    background: linear-gradient(180deg,
+            rgba(26, 32, 44, 0.3) 0%,
+            /* Subtle dark overlay at top */
+            rgba(26, 32, 44, 0.5) 100%
+            /* Stronger at bottom */
+        );
+    /* Gradient overlay darkens the image */
+    border-radius: 12px 12px 0 0;
+    /* Matches card border radius (only top corners) */
+    pointer-events: none;
+    /* Allows clicking through the overlay */
+    z-index: 1;
+    /* Places overlay above image */
+    transition: opacity 0.3s ease;
+    /* Smooth fade transition */
 }
 
 /* On hover, lighten the image and reduce overlay */
 body.dark-mode .project-card:hover img {
-    filter: brightness(0.85) contrast(1.15); /* Brightens to 85% on hover */
+    filter: brightness(0.85) contrast(1.15);
+    /* Brightens to 85% on hover */
 }
 
 body.dark-mode .project-card:hover::before {
-    opacity: 0.5; /* Reduces overlay intensity on hover */
+    opacity: 0.5;
+    /* Reduces overlay intensity on hover */
 }
 
 /* Make sure text stays above the overlay */
-body.dark-mode .project-card > * {
+body.dark-mode .project-card>* {
     position: relative;
-    z-index: 2; /* Text and buttons stay on top */
+    z-index: 2;
+    /* Text and buttons stay on top */
 }
 
 /* =========================== STATS CARDS =========================== */
 /* Container for statistics cards */
 .about-stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive grid */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    /* Responsive grid */
     gap: 24px;
     opacity: 0;
     transform: translateY(20px);
@@ -906,25 +1062,27 @@ body.dark-mode .btn-secondary {
     background: rgba(124, 58, 237, 0.1);
     border: 2px solid #8B5CF6;
     color: #C4B5FD;
-    box-shadow:inset0 2px 10px rgba(139, 92, 246, 0.3),
-    inset 0 0 20px rgba(124, 58, 237, 0.1);
+    box-shadow: inset0 2px 10px rgba(139, 92, 246, 0.3),
+        inset 0 0 20px rgba(124, 58, 237, 0.1);
 }
 
 body.dark-mode .btn-primary:hover {
-    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.5); /* Brighter glow in dark mode */
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.5);
+    /* Brighter glow in dark mode */
 }
 
 /* Secondary button dark mode adjustments */
 body.dark-mode .btn-secondary {
     background: transparent;
     border: 2px solid var(--primary-color);
-    color: var(--primary-color); 
+    color: var(--primary-color);
 }
 
 body.dark-mode .btn-secondary:hover {
     background: var(--primary-color);
     color: white;
-    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.5); /* Purple glow */
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.5);
+    /* Purple glow */
 }
 
 /* Form submit button - enhanced glow */
@@ -937,14 +1095,17 @@ body.dark-mode .form-submit:hover {
 }
 
 @keyframes pulse-glow {
-    0%, 100% {
+
+    0%,
+    100% {
         box-shadow:
-        0 4px 20px rgba(124, 58, 237, 0.4),
-        0 0 40px rgba(124, 58, 237, 0.3);
+            0 4px 20px rgba(124, 58, 237, 0.4),
+            0 0 40px rgba(124, 58, 237, 0.3);
     }
+
     50% {
-        box-shadow:inset0 4px 25px rgba(124, 58, 237, 0.5),
-        0 0 50px rgba(124, 58, 237, 0.4);
+        box-shadow: inset0 4px 25px rgba(124, 58, 237, 0.5),
+            0 0 50px rgba(124, 58, 237, 0.4);
     }
 }
 
@@ -976,7 +1137,8 @@ body.dark-mode .form-submit:hover {
 /* Grid layout for project cards */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Responsive */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    /* Responsive */
     gap: 40px;
 }
 
@@ -984,7 +1146,8 @@ body.dark-mode .form-submit:hover {
 .project-card {
     background: white;
     border-radius: 20px;
-    overflow: hidden; /* Keeps image inside rounded corners */
+    overflow: hidden;
+    /* Keeps image inside rounded corners */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
@@ -1023,21 +1186,28 @@ body.dark-mode .project-card:hover {
 
 /* Project tech tags in dark mode */
 body.dark-mode .project-tech {
-    background: rgba(102, 126, 234, 0.15); /* Subtle purple tint */
-    color: #A5B4FC; /* Light purple-blue for readability */
-    border: 1px solid rgba(102, 126, 234, 0.3); /* Subtle border */
+    background: rgba(102, 126, 234, 0.15);
+    /* Subtle purple tint */
+    color: #A5B4FC;
+    /* Light purple-blue for readability */
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    /* Subtle border */
 }
 
 body.dark-mode .project-links a {
-    background: rgba(102, 126, 234, 0.15); /* Subtle background */
-    color: #A5B4FC; /* Keep primary color */
+    background: rgba(102, 126, 234, 0.15);
+    /* Subtle background */
+    color: #A5B4FC;
+    /* Keep primary color */
     border: 1px solid rgba(102, 126, 234, 0.4);
     box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
 }
 
 body.dark-mode .project-links a:hover {
-    background: var(--primary-color); /* Fill with primary color */
-    color: white; /* White text for contrast */
+    background: var(--primary-color);
+    /* Fill with primary color */
+    color: white;
+    /* White text for contrast */
 }
 
 /* Project image area */
@@ -1052,7 +1222,7 @@ body.dark-mode .project-links a:hover {
 /* Actual project image */
 .project-img {
     width: 100%;
-    height: 100%; 
+    height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
 }
@@ -1081,7 +1251,8 @@ body.dark-mode .project-links a:hover {
 }
 
 .project-card:hover .project-title {
-    color: var(--primary-color); /* Changes to purple when hovering */
+    color: var(--primary-color);
+    /* Changes to purple when hovering */
 }
 
 /* Project description */
@@ -1164,7 +1335,7 @@ body.dark-mode .project-links a:hover {
     top: 16px;
     right: 16px;
     padding: 8px 16px;
-    background:rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     font-size: 12px;
@@ -1177,8 +1348,10 @@ body.dark-mode .project-links a:hover {
 }
 
 body.dark-mode .project-category {
-    background: #334155;  /* Dark slate */
-    color: #E0E7FF;  /* Very light purple */
+    background: #334155;
+    /* Dark slate */
+    color: #E0E7FF;
+    /* Very light purple */
     border: 1px solid #475569;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
@@ -1286,19 +1459,22 @@ body.dark-mode .skill-item:hover {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: var(--border-color); /* Gray for unfilled */
+    background: var(--border-color);
+    /* Gray for unfilled */
     transition: background 0.3s ease;
 }
 
 /* Filled dot = high proficiency */
 .skill-dot.filled {
-    background: var(--primary-color); /* Purple for filled */
+    background: var(--primary-color);
+    /* Purple for filled */
 }
 
 /* =========================== DARK MODE: SKILL DOT =========================== */
 body.dark-mode .skill-dot {
     background: rgba(102, 126, 234, 0.3);
-    border: 1px solid rgba(102, 126, 234, 0.5); /* Subtle border */        
+    border: 1px solid rgba(102, 126, 234, 0.5);
+    /* Subtle border */
 }
 
 body.dark-mode .skill-dot.filled {
@@ -1343,114 +1519,119 @@ body.dark-mode .skill-dot.filled {
     flex-wrap: wrap;
 }
 
-    /* =========================== CONTACT FORM =========================== */
-    .contact-form {
-        background: white;
-        padding: 48px;
-        border-radius: 16px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        margin-bottom: 50px;
-        text-align: left;
-    }
+/* =========================== CONTACT FORM =========================== */
+.contact-form {
+    background: white;
+    padding: 48px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 50px;
+    text-align: left;
+}
 
-    /* Form group (label & input) */
-    .form-group {
-        margin-bottom: 28px;    
-    }
+/* Form group (label & input) */
+.form-group {
+    margin-bottom: 28px;
+}
 
-    /* Form label */
-    .form-group label {
-        display: block;
-        font-weight: 600;
-        color: var(--dark-text);
-        margin-bottom: 8px;
-        font-size: 15px; 
-    }
+/* Form label */
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: var(--dark-text);
+    margin-bottom: 8px;
+    font-size: 15px;
+}
 
-    /* Text input and text area */
-    .form-group input,
-    .form-group textarea {
-        width: 100%;
-        padding: 14px 16px;
-        border: 2px solid var(--border-color);
-        border-radius: 8px;
-        font-family: 'DM Sans', sans-serif;
-        font-size: 15px;
-        transition: border-color 0.3s ease, box-shadow 0.3s ease; 
-    }
+/* Text input and text area */
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
 
-    /* Input focus state when clicked */
-    .form-group input:focus,
-    .form-group textarea:focus {
-        outline: none; /* Removes default browser outline */
-        border-color: var(--primary-color); /* Purple border */
-        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); /* Subtle glow */
-    }
+/* Input focus state when clicked */
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    /* Removes default browser outline */
+    border-color: var(--primary-color);
+    /* Purple border */
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    /* Subtle glow */
+}
 
-    /* Text area */
-    .form-group textarea {
-        min-height: 150px;
-        resize: vertical; /* Only allows vertical resizing */
-    }
+/* Text area */
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+    /* Only allows vertical resizing */
+}
 
-    /* Form submit button */
-    .form-submit {
-        width: 100%;
-        padding: 16px 32px;
-        background: var(--primary-gradient);
-        color: white;
-        border: none;
-        border-radius: 8px;
-        font-weight: 600;
-        font-size: 16px;
-        cursor: pointer;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+/* Form submit button */
+.form-submit {
+    width: 100%;
+    padding: 16px 32px;
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    .form-submit:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
-    }
+.form-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
+}
 
-    /* =========================== DARK MODE: CONTACT SECTION =========================== */
-    /* Location badge */
+/* =========================== DARK MODE: CONTACT SECTION =========================== */
+/* Location badge */
 
-    body.dark-mode .location-badge {
-        background: rgba(102, 126, 234, 0.15);
-        color: var(--primary-color);
-        border: 1px solid rgba(102, 126, 234, 0.3);
-    }
+body.dark-mode .location-badge {
+    background: rgba(102, 126, 234, 0.15);
+    color: var(--primary-color);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+}
 
-    /* Contact form container */
-    body.dark-mode .contact-form {
-        background: var(--card-bg);
-        border: 1px solid var(--border-color);
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-    }
+/* Contact form container */
+body.dark-mode .contact-form {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
 
-    /* Form inputs and text area */
-    body.dark-mode .form-group input,
-    body.dark-mode .form-group textarea {
-        background: rgba(255, 255, 255, 0.05);
-        border: 2px solid var(--border-color);
-        color: var(--dark-text); /* Light text */
-    }
+/* Form inputs and text area */
+body.dark-mode .form-group input,
+body.dark-mode .form-group textarea {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid var(--border-color);
+    color: var(--dark-text);
+    /* Light text */
+}
 
-    /* Placeholder text in dark mode */
-    body.dark-mode .form-group input::placeholder,
-    body.dark-mode .form-group textarea::placeholder {
-        color: var(--medium-text);
-        opacity: 0.6;
-    }
+/* Placeholder text in dark mode */
+body.dark-mode .form-group input::placeholder,
+body.dark-mode .form-group textarea::placeholder {
+    color: var(--medium-text);
+    opacity: 0.6;
+}
 
-    /* Input focus state */
-    body.dark-mode .form-group input:focus,
-    body.dark-mode .form-group textarea:focus {
-        background: rgba(255, 255, 255, 0.08);
-        border-color: var(--primary-color);
-        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
-    }
-    
+/* Input focus state */
+body.dark-mode .form-group input:focus,
+body.dark-mode .form-group textarea:focus {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
 /* =========================== SOCIAL LINKS =========================== */
 .social-links {
     display: flex;
@@ -1466,7 +1647,8 @@ body.dark-mode .skill-dot.filled {
     align-items: center;
     justify-content: center;
     background: white;
-    border-radius: 50%; /* Circular border */
+    border-radius: 50%;
+    /* Circular border */
     color: var(--primary-color);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
@@ -1547,6 +1729,7 @@ body.dark-mode .footer-gradient {
 /* =========================== MOBILE RESPONSIVE STYLES =========================== */
 /* Adjustment for tablets (max width: 768px)*/
 @media (max-width: 768px) {
+
     /* Smaller hero title */
     .hero-title {
         font-size: 42px;
@@ -1559,13 +1742,15 @@ body.dark-mode .footer-gradient {
 
     /* Stack hero content vertically */
     .hero-container {
-        grid-template-columns: 1fr; /* Single column */
+        grid-template-columns: 1fr;
+        /* Single column */
         gap: 40px;
     }
 
     /* Profile picture appears below text */
     .hero-image {
-        order: -1; /* Moves image above text*/
+        order: -1;
+        /* Moves image above text*/
     }
 
     /* Stack button vertically */
@@ -1574,7 +1759,8 @@ body.dark-mode .footer-gradient {
     }
 
     .btn {
-        width: 100%; /* Full width buttons */
+        width: 100%;
+        /* Full width buttons */
         justify-content: center;
     }
 
@@ -1601,6 +1787,7 @@ body.dark-mode .footer-gradient {
 
 /* Adjustments for phones (max-width: 480px) */
 @media (max-width: 480px) {
+
     /* Even smaller tiles */
     .hero-title {
         font-size: 32px;
@@ -1640,6 +1827,7 @@ body.dark-mode .footer-gradient {
         height: 45px;
     }
 }
+
 /* =========================== PRINT STYLES =========================== */
 /* How to use: Open site in Chrome → click "Save as PDF" button        */
 /* Or: File > Print > Change destination to "Save as PDF"              */
@@ -1788,19 +1976,19 @@ body.dark-mode .footer-gradient {
        page, pushing all your content to page 2+.
     ============================================================= */
     .hero {
-            min-height: auto !important;
-            padding: 30px 0 20px !important;
-            position: static !important;
-            overflow: visible !important;
-        }
+        min-height: auto !important;
+        padding: 30px 0 20px !important;
+        position: static !important;
+        overflow: visible !important;
+    }
 
-        .hero::before,
-        .hero::after {
-            display: none !important;
-            width: 0 !important;
-            height: 0 !important;
-            content: none !important;
-        }
+    .hero::before,
+    .hero::after {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+        content: none !important;
+    }
 
     .hero-container {
         display: block !important;
@@ -1850,7 +2038,10 @@ body.dark-mode .footer-gradient {
         margin: 0;
     }
 
-    h1, h2, h3, h4 {
+    h1,
+    h2,
+    h3,
+    h4 {
         page-break-after: avoid;
         break-after: avoid;
         color: #1E293B !important;
@@ -1961,11 +2152,11 @@ body.dark-mode .footer-gradient {
        .social-link is a small circle with no room for a URL.
        Without this rule, the URL wraps into a vertical column
        of characters that breaks the entire contact section. */
-    .social-link::after,
-    .social-link a::after {
-        content: "" !important;
-        display: none !important;
-    }
+        .social-link::after,
+        .social-link a::after {
+            content: "" !important;
+            display: none !important;
+        }
     }
 
     /* ============================================================
@@ -2150,7 +2341,8 @@ body.dark-mode .footer-gradient {
 
     /* --- TECHNOLOGY TAGS (C#, Java, Figma, etc.) --- */
     body.dark-mode .tag {
-        background: #2D3A56 !important;   /* solid version of rgba(102,126,234,0.15) */
+        background: #2D3A56 !important;
+        /* solid version of rgba(102,126,234,0.15) */
         color: #A5B4FC !important;
         border: 1px solid #475569 !important;
     }
@@ -2162,9 +2354,10 @@ body.dark-mode .footer-gradient {
         border: 1px solid #475569 !important;
     }
 
-    /* --- STATUS BADGE ("Open to Internship") --- */
+    /* --- STATUS BADGE ("Open to Job Opportunities") --- */
     body.dark-mode .status-badge {
-        background: #1A2E24 !important;   /* solid version of rgba(72,187,120,0.15) */
+        background: #1A2E24 !important;
+        /* solid version of rgba(72,187,120,0.15) */
         color: #68D391 !important;
         border: 1px solid #2D6A4A !important;
     }
@@ -2222,6 +2415,7 @@ body.dark-mode .footer-gradient {
 body.dark-mode::-webkit-scrollbar-track {
     background: #1A202C;
 }
+
 /* =========================== STATS CARDS =========================== */
 body.dark-mode::-webkit-scrollbar-thumb {
     background: var(--border-color);
